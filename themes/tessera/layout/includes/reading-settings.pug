@@ -1,0 +1,19 @@
+#reading-settings.reading-settings
+  section#reading-settings-panel.reading-settings-panel(hidden aria-label='阅读设置')
+    .reading-settings-heading
+      strong 阅读设置
+      button#reading-settings-close(type='button' aria-label='关闭阅读设置') ×
+    label(for='reading-text-size')
+      span 正文字号
+      output#reading-text-size-value(for='reading-text-size') 19px
+    input#reading-text-size(type='range' min='14' max='28' step='1' value='19')
+    label(for='reading-code-size')
+      span 代码字号
+      output#reading-code-size-value(for='reading-code-size') 18px
+    input#reading-code-size(type='range' min='12' max='26' step='1' value='18')
+    .reading-settings-footer
+      span 自动记住你的设置
+      button#reading-settings-reset(type='button') 恢复默认
+  button#reading-settings-toggle.reading-settings-toggle(type='button' aria-label='调整字号' aria-controls='reading-settings-panel' aria-expanded='false')
+    span(aria-hidden='true') Aa
+    span 字号

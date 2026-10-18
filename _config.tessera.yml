@@ -1,0 +1,106 @@
+home_top:
+  enable: true
+  title: 我的博客
+  subTitle: 记录生活与思考
+  siteText: BLOG
+  # 首页会自动显示所有一级分类；这里的同名条目只负责自定义图标和颜色。
+  category:
+    - name: 笔记
+      path: /categories/笔记/
+      icon: fas fa-book
+      color: "linear-gradient(120deg, #425AEF, #7a8eff)"
+    - name: 开发
+      path: /categories/开发/
+      icon: fas fa-code
+      color: "#00bcd4"
+    - name: 随记
+      path: /categories/随记/
+      icon: fas fa-dove
+      color: "linear-gradient(120deg, #425AEF, #7a8eff)"
+display_mode: dark
+code_blocks:
+  theme: ocean
+font:
+  global_font_size: 19px
+  code_font_size: 18px
+  # Phycat 使用的霞鹜文楷。
+  font_family: "'LXGW WenKai', 'Microsoft YaHei', sans-serif"
+  code_font_family: "Monaco, Menlo, Consolas, 'LXGW WenKai', monospace"
+clickShowText:
+  enable: true
+  text:
+    - AC
+    - WA
+    - TLE
+    - RE
+    - MLE
+    - CE
+    - UK
+  fontSize: 20px
+  random: false
+  mobile: true
+CDN:
+  option:
+    clickShowText: /js/click-effects.js
+aside:
+  card_author:
+    button:
+      enable: true
+      icon: fab fa-github
+      text: Follow Me
+      link: https://github.com/Math-DUT
+math:
+  use: mathjax
+  per_page: true
+  mathjax:
+    enableMenu: true
+    tags: none
+inject:
+  head:
+    - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css">
+    - |
+      <style>
+        /* ===== 亮色模式（默认） ===== */
+        details {
+          margin: 1.2em 0;
+          padding: 0.6em 1em 0.8em;
+          border: 1px solid #e0e0e0;
+          border-radius: 8px;
+          background: #fafafa;
+        }
+        details summary {
+          cursor: pointer;
+          font-weight: 600;
+          color: #2c7be5;
+          list-style: none;
+        }
+        details summary::-webkit-details-marker {
+          display: none;
+        }
+        details summary::before {
+          content: "▸ ";
+          display: inline-block;
+          transition: transform 0.2s;
+        }
+        details[open] summary::before {
+          content: "▾ ";
+        }
+        details[open] summary {
+          border-bottom: 1px dashed #ddd;
+          padding-bottom: 0.5em;
+          margin-bottom: 0.6em;
+        }
+
+        /* ===== 暗色模式适配 ===== */
+        [data-theme="dark"] details {
+          border-color: #3a3a3a;
+          background: #1e1e1e;
+          color: #ccc;
+        }
+        [data-theme="dark"] details summary {
+          color: #6db3ff;
+        }
+        [data-theme="dark"] details[open] summary {
+          border-bottom-color: #444;
+        }
+      </style>

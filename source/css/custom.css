@@ -1,0 +1,207 @@
+@font-face {
+  font-family: Monaco;
+  src: local("Monaco"), url("../fonts/Monaco.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.container pre,
+.container code {
+  font-size: var(--reading-code-size, 18px) !important;
+}
+
+.reading-settings {
+  position: fixed;
+  left: 16px;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 110;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.reading-settings button {
+  cursor: pointer;
+  font: inherit;
+}
+
+.reading-settings-toggle {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  background: var(--card-bg);
+  color: var(--font-color);
+  box-shadow: 0 4px 20px rgb(0 0 0 / 16%);
+}
+
+.reading-settings-toggle > span:first-child {
+  font-family: Georgia, serif;
+  font-size: 22px;
+}
+
+.reading-settings-toggle:hover,
+.reading-settings-toggle[aria-expanded='true'] {
+  color: var(--tessera-primary);
+  border-color: var(--tessera-primary);
+}
+
+.reading-settings-panel {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 10px);
+  width: min(300px, calc(100vw - 32px));
+  box-sizing: border-box;
+  padding: 18px;
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  background: var(--global-bg);
+  color: var(--font-color);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 20%);
+}
+
+.reading-settings-panel[hidden] {
+  display: none;
+}
+
+.reading-settings-heading,
+.reading-settings-panel label,
+.reading-settings-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.reading-settings-heading {
+  margin-bottom: 16px;
+  font-size: 17px;
+}
+
+.reading-settings-heading button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.reading-settings-panel output {
+  font-family: Monaco, monospace;
+  font-size: 13px;
+  color: var(--tessera-primary);
+}
+
+.reading-settings-panel input[type='range'] {
+  display: block;
+  width: 100%;
+  min-height: 32px;
+  margin: 4px 0 14px;
+  accent-color: var(--tessera-primary);
+  cursor: pointer;
+}
+
+.reading-settings-footer {
+  font-size: 12px;
+}
+
+.reading-settings-footer span {
+  opacity: .7;
+}
+
+.reading-settings-footer button {
+  padding: 5px 9px;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+}
+
+.reading-settings button:focus-visible,
+.reading-settings input:focus-visible {
+  outline: 2px solid var(--tessera-primary);
+  outline-offset: 3px;
+}
+
+.verdict-click-effect {
+  position: fixed;
+  z-index: 10000;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  user-select: none;
+  color: var(--verdict-color);
+}
+
+.verdict-click-label {
+  position: absolute;
+  left: 0;
+  top: -16px;
+  font-family: Monaco, Menlo, Consolas, monospace;
+  font-size: var(--verdict-font-size, 20px);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 35%), 0 0 12px currentColor;
+  animation: verdict-float 950ms ease-out both;
+}
+
+.verdict-click-particle {
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: currentColor;
+  box-shadow: 0 0 6px currentColor;
+  animation: verdict-burst 700ms ease-out both;
+}
+
+@keyframes verdict-float {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0) scale(0.65);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -12px) scale(1.12);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -72px) scale(0.9);
+  }
+}
+
+@keyframes verdict-burst {
+  from {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(var(--particle-x), var(--particle-y)) rotate(var(--particle-rotation)) scale(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .verdict-click-label {
+    transform: translate(-50%, -12px);
+    animation: verdict-fade 400ms ease-out both;
+  }
+
+  .verdict-click-particle {
+    display: none;
+  }
+}
+
+@keyframes verdict-fade {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
